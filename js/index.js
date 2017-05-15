@@ -56,8 +56,12 @@
 			img.attr("data", src);
 		},
 		"imgSelect":function(_this){
-			var input = _this.find("input");
-			input.prop("checked",input.is(":checked") == false ? true : false);
+			_this.stopPropagation();
+			if($(_this.target).attr("type")!="checkbox"){
+				var input = $(_this.target).parent("li").find("input");
+				var flag=input.is(":checked") == false;
+				input.prop("checked", flag? true : false);
+			}
 		},
 		"willDown": function() {
 			var index = this.imgCheck();
@@ -127,7 +131,17 @@
 			$(".downBar").addClass("downBarNone");
 		},
 	});
-
+	var Classify=function(){
+		
+	};
+	$.extend(Classify.prototype,{
+		oneClick:function(_this){
+			var classname=_this.attr("class");
+			var targetname=classname+"-two";
+			$(".twoClassify").css("display","none");
+			$("."+targetname).css("display","block");
+		}
+	});
 	$(document).ready(function() {
 		$(".search").on("click", function() {
 			var imgQuery = new ImgQuery();
@@ -141,7 +155,7 @@
 			imgShow.imgMouseLeave($(this));
 		});
 		$(".photoMain").on("click","li",function(){
-			imgShow.imgSelect($(this));
+			imgShow.imgSelect(event);
 		});
 		$(".photoMain").on("change", "input", function() {
 			imgShow.willDown();
@@ -183,6 +197,10 @@
 					$(".data").append(data);
 				})
 			}
+		});
+		$(".oneClassify").on("click","li>a",function(){
+			var classify=new Classify();
+			classify.oneClick($(this));
 		})
 	})
 })(jQuery);
