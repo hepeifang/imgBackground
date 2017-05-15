@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title></title>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="css/reset.css" />
+		<link rel="stylesheet" href="css/jquery-ui-1.10.4.custom.css" />
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+
+	<body>
+		<div class="wrap">
+			<div class="photoQuery">
+				<ul class="fs0">
+					<li>
+						<span>标题：</span>
+						<input placeholder="标题" class="title" />
+					</li>
+					<li>
+						<span>摘要：</span>
+						<input placeholder="摘要" class="digest" />
+					</li>
+					<li>
+						<span>关键字：</span>
+						<input placeholder="关键字" class="keyword" />
+					</li>
+					<li>
+						<span>开始时间：</span>
+						<input name="date" class="date startTime" />
+					</li>
+					<li>
+						<span>结束时间：</span>
+						<input name="date" class="date endTime" />
+					</li>
+					<li class="button">
+						<button id="type_btn1" type="button" class="btn search">搜索</button>
+						<button id="type_btn1" type="button" class="btn downNone down" disabled="disabled">下载</button>
+					</li>
+				</ul>
+			</div>
+			<div class="photoMain">
+				<ul class="fs0 data">
+					<script type="text/html" id="data">
+						{{each resultList as value key}}
+						<li>
+							<img src={{value.smallPic}} data={{value.previewPic}} /> 
+							<div>
+								<p>标题：{{value.groupTitle}}</p>
+							</div>
+							{{if value.status==0}}
+								<div class="downFlag dontDown">已下载过</div>
+							{{else}}
+								<div class="downFlag hadDown">已下载过</div>
+							{{/if}}
+							<input type="checkbox" name="photo" class="inputNone imgCheck">
+							<input type="hidden" class="ids" value={{value.resId}}>
+						</li>
+						{{/each}}
+					</script>
+				</ul>
+			</div>
+			<div class="page">
+				<ul>
+					
+				</ul>
+			</div>
+		</div>
+		<div class="downBar downBarNone">
+			<ul>
+				<li class="downNone">
+					<span>部门：</span>
+					<input placeholder="部门" class="department" />
+				</li>
+				<li class="downNone">
+					<span>编辑：</span>
+					<input placeholder="编辑" class="edit" />
+				</li>
+				<li>
+					<button class="downCancel">取消</button>
+					<button class="downSure">下载</button>
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+	<script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+	<script type="text/javascript" src="js/arttemplate.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+
+</html>

@@ -1,0 +1,189 @@
+/*common*/
+
+body {
+	width: 90%;
+	margin: 0 auto;
+	font-family: 'Open Sans';
+}
+
+.fs0 {
+	font-size: 0;
+}
+/*classify*/
+.classify{
+	float: left;
+	width: 10%;
+}
+.classify a{
+	line-height: 18px;
+	font-size: 16px;
+	font-family: inherit;
+	color: #000;
+}
+/*wrap*/
+.wrap{
+	float: left;
+	width: 90%;
+}
+/*photoQuery*/
+.photoQuery {
+	width: 1200px;
+	padding-bottom: 50px;
+}
+
+.photoQuery li {
+	position: relative;
+	display: inline-block;
+	width: 350px;
+	padding: 20px 0;
+	font-family: inherit;
+	font-size: 16px;
+	color: #393939;
+}
+
+.photoQuery input {
+	position: absolute;
+	top: 10px;
+	*top: 0;
+	left: 80px;
+	width: 200px;
+	height: 30px;
+	line-height: 30px;
+	font-size: 16px;
+}
+.photoQuery button {
+	padding: 5px 10px;
+}
+
+.photoQuery li button:not(.btn) {
+	position: absolute;
+	left:80px;
+	top: 10px;
+	width: 205px;
+	height: 35px;
+	padding: 0 3px;
+	border: 0;
+	background-color: rgba(255,255,255,0.1);
+}
+
+/*photoMain*/
+
+.photoMain {
+	padding-top: 30px;
+	border-top: 1px solid #CCCCCC;
+}
+
+.photoAnimation{
+	-webkit-animation: fade-in 0.1s;
+	animation: fade-in;
+	animation-duration: 0.1s;
+}
+@-webkit-keyframes fade-in{
+	0% {opacity: 0;}  
+  40% {opacity: 0;}  
+  100% {opacity: 1;} 
+}
+@keyframes fade-in{
+	0% {opacity: 0;}  
+  40% {opacity: 0;}  
+  100% {opacity: 1;} 
+}
+
+.photoMain li {
+	position: relative;
+	display: inline-block;
+	width: 19%;
+	margin: 0 0.4%;
+	border: 1px solid #CCCCCC;
+	height: 200px;
+	line-height: 200px;
+	overflow: hidden;
+	text-align: center;
+}
+
+.photoMain li img {
+	vertical-align: middle;
+}
+
+/*.photoMain li .imgBigger {
+	transform: scale(1.2, 1.2);
+}*/
+
+.photoMain li input {
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	width: 20px;
+	height: 20px;
+}
+.photoMain li .downFlag{
+	position: absolute;
+	right: 5px;
+	bottom: 5px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50px;
+}
+.photoMain li .dontDown{
+	background-color: #666666;
+}
+.photoMain li .hadDown {
+	background-color: green;
+}
+
+.photoMain li .imgInfo{
+	position: absolute;
+	width: 100%;
+	line-height: 16px;
+	text-align: left;
+	z-index: 99999999;
+	top:150px;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	font-size: 14px;
+	background-color: rgba(0,0,0,0.3);
+	color: #fff;
+}
+
+.photoMain li .inputNone {
+	display: none;
+}
+
+.downBar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.downBar ul {
+	position: absolute;
+	top: 30%;
+	left: 50%;
+	margin-left: -200px;
+	padding-top: 50px;
+	width: 400px;
+	height: 150px;
+	text-align: center;
+	font-size: 16px;
+	background-color: #fff;
+}
+
+.downBar input {
+	width: 200px;
+	height: 30px;
+	margin-bottom: 10px;
+	line-height: 16px;
+	font-size: 16px;
+}
+
+.downBar button {
+	padding: 6px 12px;
+}
+
+.downBarNone {
+	display: none;
+}
