@@ -8,7 +8,9 @@ require(["modules/classify", "modules/photoQuery", "modules/photoShow"], functio
 	var imgShow = new PhotoShow();
 
 	/*默认查询国内新闻*/
-	imgQuery.getNews("http://192.168.85.73:8002/xhvisionchina/getNews?pageSize=20&classify=" + $(".inputClassify").val(),
+	imgQuery.getNews(
+//		"http://192.168.85.73:8002/xhvisionchina/getNews?pageSize=20&classify=" + $(".inputClassify").val(),
+		"./backTest/newNews.json",
 		function(data) {
 			var data = template("data", data.content);
 			$(".data").html(data);
