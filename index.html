@@ -12,56 +12,45 @@
 	<body>
 		<div class="classify">
 			<ul class="oneClassify">
-				<li>
-					<a href="javascript:;" class="one">体坛大赛</a>
-					<ul class="twoClassify one-two">
-						<li>
-							<a href="javascript:;">欧洲杯</a>
-						</li>
-						<li>
-							<a href="javascript:;">奥运会</a>
-						</li>
-						<li>
-							<a href="javascript:;">亚运会</a>
-						</li>
-						<li>
-							<a href="javascript:;">全运会</a>
-						</li>
-						<li>
-							<a href="javascript:;">亚洲杯</a>
-						</li>
-					</ul>
-				</li>
-				<li>
-					<a href="javascript:;" class="two">美食</a>
-					<ul class="twoClassify two-two">
-						<li>
-							<a href="javascript:;">创新菜品</a>
-						</li>
-						<li>
-							<a href="javascript:;">特色餐厅</a>
-						</li>
-						<li>
-							<a href="javascript:;">私家菜</a>
-						</li>
-					</ul>
-				</li>
 			</ul>
 		</div>
+		<script type="text/html" id="classify">
+			{{each list  value key}}
+				<li>
+					<a href="javascript:;" name="{{value.id}}">{{value.name}}</a>
+					{{include 'classifyChild' value}}
+				</li>
+			{{/each}}
+		</script>
+		<script type="text/html" id="classifyChild">
+			<ul class="twoClassify twoClassifyNone">
+				{{each child  child key}}
+					<li>
+						{{if child.child.length==0}}
+							<a href="javascript:;" name="{{child.id}}" class="classifyLast">{{child.name}}</a>
+						{{else}}
+							<a href="javascript:;" name="{{child.id}}">{{child.name}}</a>
+						{{/if}}
+						{{include 'classifyChild' child}}
+					</li>
+				{{/each}}
+			</ul>
+		</script>
 		<div class="wrap">
 			<div class="photoQuery">
+				<input type="hidden" class="inputClassify" value="220634"/>
 				<ul class="fs0">
 					<li>
 						<span>标题：</span>
-						<input placeholder="标题" class="title" />
+						<input class="title" />
 					</li>
 					<li>
 						<span>摘要：</span>
-						<input placeholder="摘要" class="digest" />
+						<input class="digest" />
 					</li>
 					<li>
 						<span>关键字：</span>
-						<input placeholder="关键字" class="keyword" />
+						<input class="keyword" />
 					</li>
 					<li>
 						<span>开始时间：</span>
@@ -80,19 +69,24 @@
 			<div class="photoMain">
 				<ul class="fs0 data">
 					<script type="text/html" id="data">
-						{{each resultList as value key}}
+						{{each resultList  value key}}
 						<li>
-							<img src={{value.smallPic}} data={{value.previewPic}} /> 
+							<label for="{{value.resId}}">
+								<img src="{{value.smallPic}}" name="{{value.previewPic}}" /> 
 							<div>
+								<p>关键字：{{value.caption}}</p>
 								<p>标题：{{value.groupTitle}}</p>
 							</div>
 							{{if value.status==0}}
-								<div class="downFlag dontDown">已下载过</div>
+								<div class="downFlag dontDown"></div>
 							{{else}}
-								<div class="downFlag hadDown">已下载过</div>
+								<div class="downFlag hadDown"></div>
 							{{/if}}
-							<input type="checkbox" name="photo" class="inputNone imgCheck">
 							<input type="hidden" class="ids" value={{value.resId}}>
+							</label>
+							
+							<input type="checkbox" name="photo" class="inputNone imgCheck" id={{value.resId}}>
+							
 						</li>
 						{{/each}}
 					</script>
@@ -104,6 +98,7 @@
 				</ul>
 			</div>
 		</div>
+		<a href="javascript:;" class="upTop"><span></span></a>
 		<div class="downBar downBarNone">
 			<ul>
 				<li class="downNone">
@@ -121,9 +116,8 @@
 			</ul>
 		</div>
 	</body>
-	<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
-	<script src="js/jquery-ui-1.10.4.custom.min.js"></script>
-	<script type="text/javascript" src="js/arttemplate.js"></script>
-	<script type="text/javascript" src="js/index.js"></script>
-
+	<script src="js/lib/jquery-3.1.1.js"></script>
+	<script src="js/lib/jquery-ui-1.10.4.custom.min.js"></script>
+	<script src="js/lib/arttemplate.js"></script>
+	<script src="js/lib/require.js" data-main="js/index"></script>
 </html>
